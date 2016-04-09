@@ -92,6 +92,12 @@ go get
 
 Export your `GOPATH` if necessary.
 
+Run:
+
+```sh
+heroku local
+```
+
 ### Client
 
 ### Deploy
