@@ -99,8 +99,6 @@ Export your `GOPATH` if necessary.
 Deploy to heroku:
 
 ```sh
-export GO15VENDOREXPERIMENT=1
-
 godep save ./main/...
 ```
 
