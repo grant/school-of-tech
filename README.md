@@ -99,7 +99,9 @@ Export your `GOPATH` if necessary.
 Deploy to heroku:
 
 ```sh
-godep save ./...
+export GO15VENDOREXPERIMENT=1
+
+godep save ./main/...
 ```
 
 > Made at the University of Washington
