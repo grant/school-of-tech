@@ -13,6 +13,9 @@ A game about running a computer science and engineering (CSE) department. You ar
 # Gameplay
 
   TODO description of how you play
+ 
+# Ideas
+
 
 # Technology
 - Go - server
