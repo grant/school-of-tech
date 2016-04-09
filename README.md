@@ -27,6 +27,14 @@ A game about running a computer science and engineering (CSE) department. You ar
 
 ### Server
 
+Install dependencies
+
+```sh
+go get
+```
+
+Export your `GOPATH` if necessary.
+
 ### Client
 
 > Made at the University of Washington
