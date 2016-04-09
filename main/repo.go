@@ -1,6 +1,5 @@
 package main
-
-import "github.com/golang/go/src/pkg/fmt"
+import "fmt"
 
 var currentId int
 var todos Todos

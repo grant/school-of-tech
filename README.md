@@ -94,4 +94,12 @@ Export your `GOPATH` if necessary.
 
 ### Client
 
+### Deploy
+
+Deploy to heroku:
+
+```sh
+godep save ./...
+```
+
 > Made at the University of Washington
