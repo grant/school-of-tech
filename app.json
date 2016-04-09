@@ -1,0 +1,11 @@
+{
+  "name": "cse-the-game",
+  "description": "CSE Game",
+  "keywords": [
+    "go",
+  ],
+  "image": "heroku/go:1.5.1",
+  "mount_dir": "src/github.com/grant/cse-the-game",
+  "website": "http://github.com/grant/CSE-The-Game",
+  "repository": "http://github.com/grant/CSE-The-Game"
+}
