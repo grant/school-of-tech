@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"strconv"
 	"os"
 )
 
@@ -16,6 +15,6 @@ func main() {
 	if port == "" {
 		log.Fatal("$PORT must be set")
 	}
-	fmt.Println("Running on http://localhost:" + strconv.Itoa(port))
-	log.Fatal(http.ListenAndServe(":" + strconv.Itoa(port), router))
+	fmt.Println("Running on http://localhost:" + port)
+	log.Fatal(http.ListenAndServe(":" + port, router))
 }
