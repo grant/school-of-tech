@@ -3,7 +3,7 @@
 	"GoVersion": "go1.5",
 	"GodepVersion": "v62",
 	"Packages": [
-		"./main/..."
+		"./..."
 	],
 	"Deps": [
 		{
@@ -44,20 +44,20 @@
 		},
 		{
 			"ImportPath": "github.com/parnurzeal/gorequest",
-			"Comment": "v0.2.13-9-gc73179d",
-			"Rev": "c73179dd31355d86bd7692de9b47623d6d0fa696"
+			"Comment": "v0.2.13-13-gc4a74a6",
+			"Rev": "c4a74a6708c98dafe692472ca01d6390d6d2ab4e"
 		},
 		{
 			"ImportPath": "golang.org/x/net/context",
-			"Rev": "6acef71eb69611914f7a30939ea9f6e194c78172"
+			"Rev": "e45385e9b226f570b1f086bf287b25d3d4117776"
 		},
 		{
 			"ImportPath": "golang.org/x/net/publicsuffix",
-			"Rev": "6acef71eb69611914f7a30939ea9f6e194c78172"
+			"Rev": "e45385e9b226f570b1f086bf287b25d3d4117776"
 		},
 		{
 			"ImportPath": "golang.org/x/net/websocket",
-			"Rev": "6acef71eb69611914f7a30939ea9f6e194c78172"
+			"Rev": "e45385e9b226f570b1f086bf287b25d3d4117776"
 		},
 		{
 			"ImportPath": "golang.org/x/sys/unix",

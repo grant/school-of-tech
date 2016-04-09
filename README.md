@@ -99,7 +99,7 @@ Export your `GOPATH` if necessary.
 Deploy to heroku:
 
 ```sh
-godep save ./main/...
+godep save ./...
 ```
 
 > Made at the University of Washington
