@@ -4,6 +4,8 @@ import (
 	"net/http"
 	"os"
 	log "github.com/Sirupsen/logrus"
+	"github.com/grant/CSE-The-Game/cse-the-game/db"
+	"github.com/grant/CSE-The-Game/cse-the-game/routing"
 )
 
 func main() {
@@ -13,7 +15,7 @@ func main() {
 	log.SetLevel(log.DebugLevel)
 
 	// Setup router
-	router := NewRouter()
+	router := routing.NewRouter()
 
 	// Setup port
 	port := os.Getenv("PORT")
@@ -22,7 +24,7 @@ func main() {
 	}
 
 	// Setup postgres
-	setupDb()
+	db.SetupDb()
 
 	// Setup server
 	log.Println("Running on http://localhost:" + port)

@@ -1,4 +1,4 @@
-package main
+package routing
 
 import (
 "net/http"
@@ -6,7 +6,7 @@ import (
 "log"
 )
 
-func Logger(inner http.Handler) http.Handler {
+func HTTPLogger(inner http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		start := time.Now()
 		inner.ServeHTTP(w, r)

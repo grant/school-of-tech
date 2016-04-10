@@ -1,4 +1,4 @@
-package main
+package routing
 
 import (
 	"github.com/gorilla/mux"
@@ -7,7 +7,7 @@ import (
 func NewRouter() *mux.Router {
 	router := mux.NewRouter().StrictSlash(true)
 	for _, route := range routes {
-		handler := Logger(route.HandlerFunc)
+		handler := HTTPLogger(route.HandlerFunc)
 		if route.PathPrefix != "" {
 			router.Methods(route.Method).PathPrefix(route.PathPrefix).Handler(handler)
 		} else if route.Path != "" {

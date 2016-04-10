@@ -1,4 +1,4 @@
-package main
+package db
 
 import (
 	"os"
@@ -9,12 +9,10 @@ import (
 	_ "github.com/lib/pq"
 )
 
-func setupDb() {
+func SetupDb() {
 	// Open the database
 	log.Println("Opening postgres database...")
-	url := os.Getenv("DATABASE_URL")
-	log.Println(url)
-	db, errd := sql.Open("postgres", url)
+	db, errd := sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if errd != nil {
 		log.Fatalf("Error opening database: %q", errd)
 	}

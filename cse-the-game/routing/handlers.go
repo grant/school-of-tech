@@ -1,4 +1,4 @@
-package main
+package routing
 
 import (
 	"encoding/json"
@@ -8,6 +8,8 @@ import (
 	"github.com/labstack/echo"
 	"io/ioutil"
 	"io"
+	"github.com/grant/CSE-The-Game/cse-the-game/schemas"
+	"github.com/grant/CSE-The-Game/cse-the-game/db"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
@@ -15,14 +17,13 @@ func Index(w http.ResponseWriter, r *http.Request) {
 }
 
 func Db(w http.ResponseWriter, r *http.Request) {
-	setupDb()
 	fmt.Fprintf(w, "db")
 }
 
 func TodoIndex(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set(echo.ContentType, echo.ApplicationJSONCharsetUTF8)
 	w.WriteHeader(http.StatusOK)
-	if err := json.NewEncoder(w).Encode(todos); err != nil {
+	if err := json.NewEncoder(w).Encode(db.Todos); err != nil {
 		panic(err)
 	}
 }
@@ -34,7 +35,7 @@ func TodoShow(w http.ResponseWriter, r *http.Request) {
 }
 
 func TodoCreate(w http.ResponseWriter, r *http.Request) {
-	var todo Todo
+	var todo schemas.Todo
 	body, err := ioutil.ReadAll(io.LimitReader(r.Body, 1048576))
 	if err != nil {
 		panic(err)
@@ -50,7 +51,7 @@ func TodoCreate(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	t := RepoCreateTodo(todo)
+	t := db.RepoCreateTodo(todo)
 	w.Header().Set(echo.ContentType, echo.ApplicationJSONCharsetUTF8)
 	w.WriteHeader(http.StatusCreated)
 	if err := json.NewEncoder(w).Encode(t); err != nil {
