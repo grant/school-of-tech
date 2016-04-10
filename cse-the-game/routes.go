@@ -13,6 +13,8 @@ type Route struct {
 
 type Routes []Route
 
+const STATIC_DIR = "/static/"
+
 func createRoute(path string, method string, handler http.HandlerFunc) Route {
 	return Route{
 		Path:        path,

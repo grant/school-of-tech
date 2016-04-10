@@ -12,7 +12,7 @@ import (
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "hello %q", html.EscapeString(r.URL.Path))
+	fmt.Fprintf(w, "nope %q", html.EscapeString(r.URL.Path))
 }
 
 func TodoIndex(w http.ResponseWriter, r *http.Request) {
@@ -53,3 +53,5 @@ func TodoCreate(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 }
+
+var Static = http.StripPrefix(STATIC_DIR, http.FileServer(http.Dir("." + STATIC_DIR)))

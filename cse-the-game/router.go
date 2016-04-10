@@ -1,6 +1,9 @@
 package main
 
-import "github.com/gorilla/mux"
+import (
+	"github.com/gorilla/mux"
+	"github.com/parnurzeal/gorequest"
+)
 
 func NewRouter() *mux.Router {
 	router := mux.NewRouter().StrictSlash(true)
@@ -8,5 +11,6 @@ func NewRouter() *mux.Router {
 		handler := Logger(route.HandlerFunc)
 		router.Methods(route.Method).Path(route.Path).Handler(handler)
 	}
+	router.PathPrefix(STATIC_DIR).Methods(gorequest.GET).Handler(Static)
 	return router
 }
