@@ -12,9 +12,7 @@
   "author": "Grant Timmerman",
   "license": "MIT",
   "dependencies": {
-    "webpack": "^1.12.14"
-  },
-  "devDependencies": {
+    "webpack": "^1.12.14",
     "babel": "^6.5.2",
     "babel-core": "^6.7.6",
     "babel-loader": "^6.2.4",
