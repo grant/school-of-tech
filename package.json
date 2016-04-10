@@ -8,6 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config www/webpack.config.js --progress --colors -p",
     "dev": "webpack --watch --progress --profile --colors --hot --config www/webpack.config.js",
+    "deploy": "godep save ./... && git push heroku master",
     "heroku-postbuild": "npm run build"
   },
   "author": "Grant Timmerman",

@@ -89,6 +89,9 @@ DATABASE_URL=postgres://username:password@host:port/path
 PORT=5000
 ```
 
+Use `package.json`'s scripts for all our commands, even for Go code.
+Run `npm run` to see all available commands.
+
 ### Server
 
 Run:
@@ -114,11 +117,12 @@ heroku addons:create heroku-postgresql:hobby-dev
 heroku buildpacks:add heroku/go heroku/nodejs
 ```
 
+> (You may want to change the order of the buildpacks.)
+
 Deploy to heroku:
 
 ```sh
-godep save ./...
-git push heroku master
+npm run deploy
 ```
 
 Made at the University of Washington
