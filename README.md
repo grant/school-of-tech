@@ -101,7 +101,9 @@ Export your `GOPATH` if necessary.
 Deploy to heroku:
 
 ```sh
+heroku buildpacks:add heroku/go heroku/nodejs
 godep save ./...
+git push heroku master
 ```
 
 > Made at the University of Washington
