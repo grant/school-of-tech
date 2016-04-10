@@ -84,19 +84,15 @@ A game about running a computer science and engineering (CSE) department. You ar
 
 ### Server
 
-Install dependencies
-
-```sh
-go get
-```
-
-Export your `GOPATH` if necessary.
-
 Run:
 
 ```sh
-heroku local
+go get ./cse-the-game && heroku local
+# or
+PORT=5000 go run ./cse-the-game/*.go
 ```
+
+Export your `GOPATH` if necessary.
 
 ### Client
 

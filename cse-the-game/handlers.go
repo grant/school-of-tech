@@ -11,7 +11,7 @@ import (
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	http.FileServer(http.Dir("./static/views/")).ServeHTTP(w, r)
+	http.FileServer(http.Dir("." + STATIC_DIR + "views/")).ServeHTTP(w, r)
 }
 
 func TodoIndex(w http.ResponseWriter, r *http.Request) {

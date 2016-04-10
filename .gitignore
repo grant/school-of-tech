@@ -1,6 +1,6 @@
 # Custom JS
 static/bundle/
-build/
+build
 
 # General
 .env
