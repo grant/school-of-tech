@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config webpack.config.js --progress --colors -p",
-    "dev": "webpack --watch --progress --profile --colors --hot --config webpack.config.js",
+    "build": "webpack --config www/webpack.config.js --progress --colors -p",
+    "dev": "webpack --watch --progress --profile --colors --hot --config www/webpack.config.js",
     "heroku-postbuild": "npm run build"
   },
   "author": "Grant Timmerman",
