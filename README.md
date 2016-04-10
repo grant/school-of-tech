@@ -104,8 +104,6 @@ PORT=5000 go run ./cse-the-game/*.go
 npm run server
 ```
 
-Export your `GOPATH` if necessary.
-
 ### Client
 
 ### Deploy
