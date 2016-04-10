@@ -8,6 +8,7 @@ import (
 type Route struct {
 	Method      string
 	Path        string
+	PathPrefix  string
 	HandlerFunc http.HandlerFunc
 }
 
@@ -23,9 +24,18 @@ func createRoute(path string, method string, handler http.HandlerFunc) Route {
 	}
 }
 
+func createDirectoryRoute(pathPrefix string, method string, handler http.HandlerFunc) Route {
+	return Route{
+		PathPrefix: pathPrefix,
+		Method:method,
+		HandlerFunc:handler,
+	}
+}
+
 var routes = Routes{
 	createRoute("/", gorequest.GET, Index),
 	createRoute("/todos", gorequest.GET, TodoIndex),
 	createRoute("/todos/{todoId}", gorequest.GET, TodoShow),
 	createRoute("/todos", gorequest.POST, TodoCreate),
+	createDirectoryRoute(STATIC_DIR, gorequest.GET, Static),
 }

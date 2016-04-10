@@ -1,3 +1,8 @@
+# Custom JS
+static/bundle/
+build/
+
+# General
 .env
 .DS_Store
 .idea

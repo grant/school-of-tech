@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gorilla/mux"
-	"html"
 	"net/http"
 	"github.com/labstack/echo"
 	"io/ioutil"
@@ -12,7 +11,7 @@ import (
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "nope %q", html.EscapeString(r.URL.Path))
+	http.FileServer(http.Dir("./static/views/")).ServeHTTP(w, r)
 }
 
 func TodoIndex(w http.ResponseWriter, r *http.Request) {
@@ -54,4 +53,6 @@ func TodoCreate(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-var Static = http.StripPrefix(STATIC_DIR, http.FileServer(http.Dir("." + STATIC_DIR)))
+func Static(w http.ResponseWriter, r *http.Request) {
+	http.StripPrefix(STATIC_DIR, http.FileServer(http.Dir("." + STATIC_DIR))).ServeHTTP(w, r)
+}
