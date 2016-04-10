@@ -14,6 +14,11 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	http.FileServer(http.Dir("." + STATIC_DIR + "views/")).ServeHTTP(w, r)
 }
 
+func Db(w http.ResponseWriter, r *http.Request) {
+	setupDb()
+	fmt.Fprintf(w, "db")
+}
+
 func TodoIndex(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set(echo.ContentType, echo.ApplicationJSONCharsetUTF8)
 	w.WriteHeader(http.StatusOK)

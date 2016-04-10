@@ -34,6 +34,7 @@ func createDirectoryRoute(pathPrefix string, method string, handler http.Handler
 
 var routes = Routes{
 	createRoute("/", gorequest.GET, Index),
+	createRoute("/db", gorequest.GET, Db),
 	createRoute("/todos", gorequest.GET, TodoIndex),
 	createRoute("/todos/{todoId}", gorequest.GET, TodoShow),
 	createRoute("/todos", gorequest.POST, TodoCreate),

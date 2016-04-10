@@ -82,6 +82,13 @@ A game about running a computer science and engineering (CSE) department. You ar
 
 # Build
 
+First create an `.env` file for environment variables
+
+```sh
+DATABASE_URL=postgres://username:password@host:port/path
+PORT=5000
+```
+
 ### Server
 
 Run:
@@ -90,6 +97,8 @@ Run:
 go get ./cse-the-game && heroku local
 # or
 PORT=5000 go run ./cse-the-game/*.go
+# or
+npm run server
 ```
 
 Export your `GOPATH` if necessary.
@@ -98,12 +107,18 @@ Export your `GOPATH` if necessary.
 
 ### Deploy
 
+First time setup:
+
+```sh
+heroku addons:create heroku-postgresql:hobby-dev
+heroku buildpacks:add heroku/go heroku/nodejs
+```
+
 Deploy to heroku:
 
 ```sh
-heroku buildpacks:add heroku/go heroku/nodejs
 godep save ./...
 git push heroku master
 ```
 
-> Made at the University of Washington
+Made at the University of Washington

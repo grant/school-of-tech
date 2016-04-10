@@ -7,9 +7,9 @@ module.exports = {
     //"webpack/hot/only-dev-server", // See above
     path.resolve(__dirname, 'js/app.js')
   ],
-  output: { // Compile into js/build.js
+  output: {
     path: path.resolve(__dirname, '../static/build'),
-    filename: "js/bundle.js"
+    filename: "js/[name].js"
   },
   module: {
     loaders: [{
