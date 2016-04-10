@@ -32,11 +32,12 @@ func createDirectoryRoute(pathPrefix string, method string, handler http.Handler
 	}
 }
 
+var handler = RouteHandler{}
 var routes = Routes{
-	createRoute("/", gorequest.GET, Index),
-	createRoute("/db", gorequest.GET, Db),
-	createRoute("/todos", gorequest.GET, TodoIndex),
-	createRoute("/todos/{todoId}", gorequest.GET, TodoShow),
-	createRoute("/todos", gorequest.POST, TodoCreate),
-	createDirectoryRoute(STATIC_DIR, gorequest.GET, Static),
+	createRoute("/", gorequest.GET, handler.Index),
+	createRoute("/db", gorequest.GET, handler.Db),
+	//createRoute("/todos", gorequest.GET, handler.TodoIndex),
+	//createRoute("/todos/{todoId}", gorequest.GET, handler.TodoShow),
+	//createRoute("/todos", gorequest.POST, handler.TodoCreate),
+	createDirectoryRoute(STATIC_DIR, gorequest.GET, handler.Static),
 }

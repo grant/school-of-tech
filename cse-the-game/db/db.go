@@ -2,47 +2,43 @@ package db
 
 import (
 	"os"
-	"database/sql"
-	"fmt"
-	"time"
 	log "github.com/Sirupsen/logrus"
 	_ "github.com/lib/pq"
+	"github.com/jinzhu/gorm"
+	"reflect"
 )
 
-func SetupDb() {
+var DB *gorm.DB = nil
+
+func SetupDb(models []interface{}) {
 	// Open the database
 	log.Println("Opening postgres database...")
-	db, errd := sql.Open("postgres", os.Getenv("DATABASE_URL"))
-	if errd != nil {
-		log.Fatalf("Error opening database: %q", errd)
-	}
-
-	// Create tables
-	if _, err := db.Exec("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)"); err != nil {
-		log.Fatalf("Error creating database table: %q\n", err)
-		return
-	}
-
-	// Insert rows
-	if _, err := db.Exec("INSERT INTO ticks VALUES (now())"); err != nil {
-		log.Fatalf("Error incrementing tick: %q\n", err)
-		return
-	}
-
-	// Test select
-	rows, err := db.Query("SELECT tick FROM ticks")
+	var err error
+	DB, err = gorm.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
-		log.Fatalf("Error reading ticks: %q\n", err)
-		return
+		log.Fatalf("Error opening database: %q", err)
 	}
 
-	defer rows.Close()
-	for rows.Next() {
-		var tick time.Time
-		if err := rows.Scan(&tick); err != nil {
-			log.Fatalf("Error scanning ticks: %q\n", err)
-			return
+	// Ping function checks the database connectivity
+	err = DB.DB().Ping()
+	if err != nil {
+		panic(err)
+	}
+
+	createTables(models)
+}
+
+func createTables(tables []interface{}) {
+	for _, table := range tables {
+		// Create new tables
+		tableName := reflect.Indirect(reflect.ValueOf(table)).Type().Name()
+		log.Debugln("Checking table:", tableName)
+		if !DB.HasTable(table) {
+			log.Infoln("CREATE TABLE:", tableName)
+			DB.CreateTable(table)
 		}
-		fmt.Printf("Read from DB: %s\n", tick.String())
+
+		// Migrate if needed
+		DB.AutoMigrate(table)
 	}
 }
