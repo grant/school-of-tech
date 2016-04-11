@@ -5,6 +5,8 @@ import (
 	"github.com/googollee/go-socket.io"
 	"github.com/grant/CSE-The-Game/cse-the-game/ws"
 	"github.com/Sirupsen/logrus"
+	"github.com/grant/CSE-The-Game/cse-the-game/auth"
+	"net/http"
 )
 
 func NewRouter() *mux.Router {
@@ -20,7 +22,14 @@ func NewRouter() *mux.Router {
 
 	// Add routes
 	for _, route := range routes {
-		handler := HTTPLogger(route.HandlerFunc)
+		// Apply middleware
+		var handler http.Handler = route.HandlerFunc
+		if route.AuthenticationRequired {
+			handler = auth.AuthenicationHandler(route.HandlerFunc)
+		}
+		handler = HTTPLogger(handler)
+
+		// Setup router methods
 		switch route.Type {
 		case File:
 			router.Methods(route.Method).Path(route.Path).Handler(handler)
