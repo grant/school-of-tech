@@ -14,7 +14,6 @@
   "author": "Grant Timmerman",
   "license": "MIT",
   "dependencies": {
-    "webpack": "^1.12.14",
     "babel": "^6.5.2",
     "babel-core": "^6.7.6",
     "babel-loader": "^6.2.4",
@@ -35,9 +34,11 @@
     "react-router": "^2.0.1",
     "react-transform-hmr": "^1.0.4",
     "redux": "^3.4.0",
+    "socket.io-client": "^1.4.5",
     "style-loader": "^0.13.1",
     "stylus": "^0.54.2",
     "stylus-loader": "^2.0.0",
+    "webpack": "^1.12.14",
     "webpack-dev-server": "^1.14.1"
   }
 }

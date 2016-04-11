@@ -1,14 +1,14 @@
-package model
+package models
 
 import (
 	"github.com/jinzhu/gorm"
 	"github.com/grant/CSE-The-Game/cse-the-game/db"
-	log "github.com/Sirupsen/logrus"
 )
 
 type User struct {
 	gorm.Model
-	Username    string `json:"username"`
+	Email string `json:"email" gorm:"not null;unique_index"`
+	Username    string `json:"username" gorm:"not null;unique_index"`
 	DisplayName string `json:"displayName"`
 }
 
@@ -19,6 +19,5 @@ func CreateUser(user User) {
 func GetAllUsers() []User {
 	var users []User;
 	db.DB.Find(&users)
-	log.Println(users)
 	return users
 }

@@ -77,6 +77,8 @@ A game about running a computer science and engineering (CSE) department. You ar
 - React - frontend UI
   - Redux
   - inline styles
+- Postgres - database
+  - gorm - ORM
 - Iso.js - graphics
 - Webpack - build system
 

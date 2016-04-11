@@ -1,19 +1,19 @@
 package main
 
 import (
+	"github.com/Sirupsen/logrus"
+	"github.com/grant/CSE-The-Game/cse-the-game/db"
+	"github.com/grant/CSE-The-Game/cse-the-game/models"
+	"github.com/grant/CSE-The-Game/cse-the-game/routing"
 	"net/http"
 	"os"
-	log "github.com/Sirupsen/logrus"
-	"github.com/grant/CSE-The-Game/cse-the-game/db"
-	"github.com/grant/CSE-The-Game/cse-the-game/routing"
-	"github.com/grant/CSE-The-Game/cse-the-game/model"
 )
 
 func main() {
 	// Setup logger
-	log.SetFormatter(&log.TextFormatter{})
-	log.SetOutput(os.Stderr)
-	log.SetLevel(log.DebugLevel)
+	logrus.SetFormatter(&logrus.TextFormatter{})
+	logrus.SetOutput(os.Stderr)
+	logrus.SetLevel(logrus.DebugLevel)
 
 	// Setup router
 	router := routing.NewRouter()
@@ -21,19 +21,13 @@ func main() {
 	// Setup port
 	port := os.Getenv("PORT")
 	if port == "" {
-		log.Fatal("$PORT must be set")
+		logrus.Fatal("$PORT must be set")
 	}
 
 	// Setup postgres
-	db.SetupDb(model.GetModels())
-
-	model.CreateUser(model.User{
-		Username:"grant2",
-		DisplayName:"gctimmer2",
-	})
-	model.GetAllUsers()
+	db.SetupDb(models.GetModels())
 
 	// Setup server
-	log.Println("Running on http://localhost:" + port)
-	log.Fatal(http.ListenAndServe(":" + port, router))
+	logrus.Println("Running on http://localhost:" + port)
+	logrus.Fatal(http.ListenAndServe(":"+port, router))
 }
