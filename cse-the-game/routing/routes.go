@@ -12,6 +12,7 @@ const (
 	File = iota
 	Directory
 	Ws
+	NotFound
 )
 
 type Route struct {
@@ -20,7 +21,7 @@ type Route struct {
 	Method                 string
 	Path                   string
 	PathPrefix             string
-	Handler                ws.SocketHandler
+	SocketHandler          ws.SocketHandler
 	HandlerFunc            http.HandlerFunc
 }
 
@@ -58,12 +59,20 @@ func createDirectoryRoute(pathPrefix string, method string, handler http.Handler
 	}
 }
 
+func createNotFoundRoute(handler http.HandlerFunc) Route {
+	return Route{
+		Type: NotFound,
+		AuthenticationRequired: false,
+		HandlerFunc: handler,
+	}
+}
+
 func createWebsocketRoute(path string, handler ws.SocketHandler) Route {
 	return Route{
 		Type: Ws,
 		AuthenticationRequired: false,
 		Path: path,
-		Handler: handler,
+		SocketHandler: handler,
 	}
 }
 
@@ -72,7 +81,9 @@ var routes = Routes{
 	createRoute("/", gorequest.GET, handler.Index),
 	createRoute("/login", gorequest.POST, handler.Login),
 	createRoute("/logout", gorequest.POST, handler.Logout),
+	createRoute("/signup", gorequest.POST, handler.Signup),
 	createAuthenticatedRoute("/db", gorequest.GET, handler.Db),
 	createWebsocketRoute(ws.Connection, handler.WebsocketConnect),
 	createDirectoryRoute(STATIC_DIR, gorequest.GET, handler.Static),
+	createNotFoundRoute(handler.NotFound),
 }

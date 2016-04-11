@@ -37,8 +37,10 @@ func NewRouter() *mux.Router {
 			router.Methods(route.Method).PathPrefix(route.PathPrefix).Handler(handler)
 		case Ws:
 			if ws.IsSocketIOEvent(route.Path) {
-				wsEventHandlers[route.Path] = route.Handler
+				wsEventHandlers[route.Path] = route.SocketHandler
 			}
+		case NotFound:
+			router.NotFoundHandler = handler
 		}
 	}
 
@@ -51,7 +53,7 @@ func NewRouter() *mux.Router {
 		for _, route := range routes {
 			if !ws.IsSocketIOEvent(route.Path) {
 				so.On(route.Path, func(i interface{}) {
-					route.Handler(so, i)
+					route.SocketHandler(so, i)
 				})
 			}
 		}

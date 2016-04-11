@@ -1,73 +1,44 @@
 package auth
 
 import (
-	"github.com/gorilla/securecookie"
 	"net/http"
 	"github.com/grant/CSE-The-Game/cse-the-game/models"
-	"github.com/Sirupsen/logrus"
-	"encoding/gob"
+	"golang.org/x/crypto/bcrypt"
 )
 
-const REDIRECT_URL = "/login"
-const COOKIE_SESSION = "session"
+// Methods
 
-var cookieHandler = securecookie.New(
-	securecookie.GenerateRandomKey(64),
-	securecookie.GenerateRandomKey(32),
-)
-
-func init() {
-	gob.Register(models.Session{})
-}
-
-func SetSession(username string, w http.ResponseWriter) {
-	value := models.Session{
-		Username: username,
+func Login(username string, password string, w http.ResponseWriter) bool {
+	// check credentials
+	if IsValidUsernamePassword(username, password) {
+		SetSession(username, w)
+		return true
 	}
-	if encoded, err := cookieHandler.Encode(COOKIE_SESSION, value); err == nil {
-		cookie := &http.Cookie{
-			Name: COOKIE_SESSION,
-			Value: encoded,
-			Path: "/",
-		}
-		http.SetCookie(w, cookie)
-	}
+	return false
 }
 
-func ClearSession(w http.ResponseWriter) {
-	cookie := &http.Cookie{
-		Name: COOKIE_SESSION,
-		Value: "",
-		Path: "/",
-		MaxAge: -1,
-	}
-	http.SetCookie(w, cookie)
+func Logout(w http.ResponseWriter) {
+	ClearSession(w)
 }
 
-func GetSession(r *http.Request) (models.Session, error) {
-	var err error
-	if cookie, err := r.Cookie(COOKIE_SESSION); err == nil {
-		cookieValue := models.Session{}
-		if err = cookieHandler.Decode(COOKIE_SESSION, cookie.Value, &cookieValue); err == nil {
-			return cookieValue, nil
-		} else {
-			logrus.Error(err)
-		}
-	}
-	return models.Session{}, err
+func HashedPassword(password string) ([]byte, error) {
+	return bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 }
 
-func AuthenicationHandler(inner http.Handler) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if IsAuthenticated(r) {
-			inner.ServeHTTP(w, r)
-		} else {
-			http.Redirect(w, r, REDIRECT_URL, http.StatusFound)
-		}
-	})
-}
+// Checks
 
 func IsAuthenticated(r *http.Request) bool {
 	session, err := GetSession(r)
 	return err == nil && session.Username != ""
+}
+
+func IsValidUsernamePassword(username string, password string) bool {
+	user, err := models.GetUserByUsername(username)
+	if err != nil {
+		return false
+	}
+
+	// Comparing the password with the hash
+	err = bcrypt.CompareHashAndPassword([]byte(user.HashedPassword), []byte(password))
+	return err == nil // nil means match
 }
