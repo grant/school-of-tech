@@ -6,7 +6,7 @@ import (
 	"github.com/Sirupsen/logrus"
 	"github.com/googollee/go-socket.io"
 	"github.com/grant/CSE-The-Game/cse-the-game/auth"
-	"github.com/golang/go/src/pkg/fmt"
+	"fmt"
 )
 
 type RouteHandler struct{}
