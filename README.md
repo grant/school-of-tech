@@ -76,6 +76,8 @@ A game about running a computer science and engineering (CSE) department. You ar
   - Good for many concurrent clients
 - React - frontend UI
   - Redux
+  - Router
+  - Flux
   - inline styles
 - Postgres - database
   - gorm - ORM
