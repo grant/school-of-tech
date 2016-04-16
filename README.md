@@ -75,10 +75,9 @@ A game about running a computer science and engineering (CSE) department. You ar
 - Go - server
   - Good for many concurrent clients
 - React - frontend UI
-  - Redux
-  - Router
-  - Flux
-  - inline styles
+  - Redux - State Manager
+  - Router - Routing
+  - Flux - Architecture
 - Postgres - database
   - gorm - ORM
 - Iso.js - graphics
