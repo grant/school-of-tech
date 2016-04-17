@@ -4,10 +4,10 @@
  */
 
 import homeReducer from './homeReducer';
+import { combineReducers } from 'redux';
 
-// Replace line below once you have several reducers with
-// import { combineReducers } from 'redux';
-// const rootReducer = combineReducers({ homeReducer, yourReducer })
-const rootReducer = homeReducer;
+const rootReducer = combineReducers({
+  homeReducer,
+});
 
 export default rootReducer;

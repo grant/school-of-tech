@@ -1,0 +1,15 @@
+buttonColor = rgba(red, 0.3)
+buttonBorderRadius = 1px
+
+.Button
+  color COLOR_TEXT_WHITE
+  cursor pointer
+  text-transform uppercase
+  background-color buttonColor
+  border none
+  border-radius buttonBorderRadius
+  transition background-color TRANSITION_FAST
+  &:hover
+    background-color lighten(buttonColor, 20)
+  &:focus
+    outline none
