@@ -1,11 +1,7 @@
 buttonColor = COLOR_PINK
-buttonBorder = {
-  border-style: solid,
-  border-radius: 2px,
-  border-width: 1px,
-  border-color: COLOR_WHITE,
-}
 outlineOffset = 10px
+buttonBorderRadius = 2px
+buttonBorderWidth = 1px
 
 // Extra attributes
 // .bordered - almost transparent with white border
@@ -16,8 +12,9 @@ outlineOffset = 10px
   color COLOR_TEXT_WHITE
   cursor pointer
   text-transform uppercase
-  border-radius buttonBorder.radius
-  transition background-color TRANSITION_FAST
+  border-radius buttonBorderRadius
+  transition background-color TRANSITION_NORMAL
+
   &:not(.bordered)
     background-color buttonColor
     border none
@@ -28,7 +25,9 @@ outlineOffset = 10px
     background-color black
   &.bordered
     background-color rgba(COLOR_WHITE, 0.1)
-    {buttonBorder}
+    border buttonBorderWidth solid COLOR_WHITE
+    &:hover
+      background-color rgba(COLOR_WHITE, 0.3)
   &.small
     &:after
       left: - (outlineOffset / 2);
@@ -37,7 +36,7 @@ outlineOffset = 10px
     content: '';
     position: absolute;
     z-index: -1;
-    border: buttonBorder.border-width solid rgba(COLOR_WHITE, 0.4)
+    border buttonBorderWidth solid rgba(COLOR_WHITE, 0.4)
     left: - outlineOffset;
     top: outlineOffset;
     width: 100%;
