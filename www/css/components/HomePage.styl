@@ -1,1 +1,20 @@
-//.HomePage
+OFFSET = 10px
+
+playButton = {
+  width: 100px,
+  height: 50px,
+}
+
+.HomePage
+  height 100%
+  .play.Button
+    position: absolute
+    top 70%
+    left "calc(50% - %s)" % (playButton.width / 2)
+    width: playButton.width
+    height: playButton.height
+    font-size 35px
+  .HomeNavigation
+    position: absolute
+    top OFFSET
+    right OFFSET

@@ -13,6 +13,7 @@ class HomePage extends Component {
     return (
       <div className="HomePage">
         <Button
+          className="play"
           value="Play"
           onClick={this.props.actions.signupButtonHandler}
         />
