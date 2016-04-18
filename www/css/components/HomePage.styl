@@ -1,4 +1,4 @@
-OFFSET = 10px
+PAGE_PADDING = 10px
 
 playButton = {
   width: 100px,
@@ -6,6 +6,9 @@ playButton = {
 }
 
 .HomePage
+  background-color COLOR_BLUE //temp
+  z-index 0; // value doesn't matter, used for child pseudo-elements z-indexing
+  position: relative
   height 100%
   .play.Button
     position: absolute
@@ -16,5 +19,5 @@ playButton = {
     font-size 35px
   .HomeNavigation
     position: absolute
-    top OFFSET
-    right OFFSET
+    top PAGE_PADDING
+    right PAGE_PADDING

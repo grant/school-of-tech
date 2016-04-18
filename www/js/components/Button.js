@@ -4,7 +4,8 @@ class Button extends Component {
   static get defaultProps() {
     return {
       value: '',
-      onClick: ()=>{},
+      onClick: ()=> {
+      },
       className: '',
     };
   }
@@ -15,12 +16,13 @@ class Button extends Component {
 
   render() {
     return (
-      <input
+      <button
         className={`Button ${this.props.className}`}
         type='button'
         onClick={this.props.onClick.bind(this)}
-        value={this.props.value}
-      />
+      >
+        {this.props.value}
+      </button>
     );
   }
 }

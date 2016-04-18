@@ -8,10 +8,12 @@ class HomeNavigation extends Component {
     return (
       <nav className="HomeNavigation">
         <Button
+          className="signup small bordered"
           value="Sign up"
           onClick={this.signupButtonHandler}
         />
         <Button
+          className="login small"
           value="Login"
           onClick={this.loginButtonHandler}
         />
