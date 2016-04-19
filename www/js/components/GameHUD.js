@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NotificationBar from './NotificationBar';
 import MenuBar from './MenuBar';
+import Modal from './Modal';
 
 class GameHUD extends Component {
   static propTypes = {
@@ -13,6 +14,11 @@ class GameHUD extends Component {
       <div
         className="GameHUD"
       >
+        <div className="modalContainer">
+          <Modal>
+            <div className="foo">foo</div>
+          </Modal>
+        </div>
         <NotificationBar />
         <MenuBar
           balance={balance}

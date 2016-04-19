@@ -21,9 +21,9 @@ class Game extends Component {
   onLoop(timeDelta:number) {
     this.gameModel.updateGameTime(timeDelta);
     this.gameModel.state.balance += Math.floor(Math.random() * 100);
-    this.setState({
-      gameState: this.gameModel.state,
-    });
+    //this.setState({
+    //  gameState: this.gameModel.state,
+    //});
   }
 
   /**
