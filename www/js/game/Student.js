@@ -1,25 +1,18 @@
+import RandomName from 'random-name';
+import Person from './Person';
+
 const CLASS_STANDING = ['Freshman', 'Sophomore', 'Junior', 'Senior'];
 const MAX_CREDITS = 100;
 
 /**
  * A student in the game
  */
-class Student {
+class Student extends Person {
   constructor() {
-    this.position = {
-      x: 0,
-      y: 0,
-      z: 0,
+    this.credits = 0;
+    this.wants = {
+
     };
-    this.needs = {
-      hunger: 100,
-      bladder: 100,
-      fun: 100,
-      energy: 100,
-      hygiene: 100,
-      social: 100,
-    };
-    this.credits = 0; // out of 100 credits
   }
 
   static creditsToClassStanding(credits:number) {
