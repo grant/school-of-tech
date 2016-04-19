@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GameHUD from './GameHUD';
+import GameScene from './GameScene';
 import GameState from '../stores/GameState'
 
 class Game extends Component {
@@ -14,6 +15,7 @@ class Game extends Component {
       <div
         className="Game"
       >
+        <GameScene />
         <GameHUD />
       </div>
     );
