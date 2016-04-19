@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HomeNavigation from './HomeNavigation';
 import Button from './Button';
+import Game from './Game';
 
 class HomePage extends Component {
   static propTypes = {
@@ -18,6 +19,7 @@ class HomePage extends Component {
           onClick={this.props.actions.signupButtonHandler}
         />
         <HomeNavigation/>
+        <Game/>
       </div>
     );
   }
