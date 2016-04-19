@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import NotificationBar from './NotificationBar';
+import MenuBar from './MenuBar';
 
 class GameHUD extends Component {
   render() {
@@ -6,7 +8,8 @@ class GameHUD extends Component {
       <div
         className="GameHUD"
       >
-        hud
+        <NotificationBar />
+        <MenuBar />
       </div>
     );
   }
