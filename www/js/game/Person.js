@@ -1,3 +1,5 @@
+import RandomName from 'random-name';
+
 class Person {
   constructor() {
     // name: The full name of the person
@@ -16,12 +18,12 @@ class Person {
     this.destination = this.position;
     // needs: 0-100 What needs does this person have? 100 means satisfied.
     this.needs = {
-      hunger: 100,
-      bladder: 100,
-      fun: 100,
-      energy: 100,
-      hygiene: 100,
-      social: 100,
+      hunger: 100, // food, time
+      bladder: 100, // food, restroom, morning?
+      stress: 100, // classes, homework, finals, food, social
+      energy: 100, // classes, sitting down, food
+      hygiene: 100, // showers, trash cans, recycling, plants, janitor
+      social: 100, // parties, labs, people, music
     };
   }
 }
