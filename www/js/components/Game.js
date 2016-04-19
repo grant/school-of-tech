@@ -30,7 +30,6 @@ class Game extends Component {
    * Sets up the game loop
    */
   setupGameLoop() {
-    console.log('Setting up game loop');
     let self = this;
     raf(function tick() {
       let thisFrameTime = +new Date;
@@ -49,7 +48,9 @@ class Game extends Component {
         <GameScene
           gameState={this.state.gameState}
         />
-        <GameHUD />
+        <GameHUD
+          gameState={this.state.gameState}
+        />
       </div>
     );
   }
