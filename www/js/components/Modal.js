@@ -15,7 +15,7 @@ class Modal extends Component {
       <section className="Modal">
         <header className="header">
           <div className="title">{this.props.headerTitle}</div>
-          <button className="close">X</button>
+          <button className="close">✕</button>
         </header>
         <div className="content">
           {this.props.children}

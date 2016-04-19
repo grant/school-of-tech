@@ -21,7 +21,8 @@ class Map {
           x: 23,
           y: 12,
           direction: 2, // of 4
-        }
+        },
+        name: '',
       }
     };
     // items: furniture maps id to x, y, direction, itemTypeId

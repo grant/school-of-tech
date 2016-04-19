@@ -10,14 +10,12 @@ buttonBorderWidth = 1px
 .Button
   position: relative
   color COLOR_TEXT_WHITE
-  cursor pointer
   text-transform uppercase
   border-radius buttonBorderRadius
   transition background-color TRANSITION_NORMAL
 
   &:not(.bordered)
     background-color buttonColor
-    border none
   &:hover
     background-color lighten(buttonColor, 10)
   &:focus

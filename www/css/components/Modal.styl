@@ -1,6 +1,6 @@
 modalWidth = 800px
 modalHeight = 600px
-headerHeight = 20px
+headerHeight = 40px
 contentPadding = 10px
 
 .Modal
@@ -17,18 +17,28 @@ contentPadding = 10px
     position: absolute
     height: headerHeight
     width: 100%
+    background-color coral
 
     .title
-      padding 2px 4px
       text-align: center
       width: 100%
+      height: 100%
       color COLOR_TEXT_WHITE
+      line-height: headerHeight
 
     .close
       position: absolute
       top: 0
       right: 0
       padding 4px
+      width: headerHeight
+      height: headerHeight
+      background-color transparent
+      font-size 16px
+      color COLOR_TEXT_WHITE
+      transition background-color TRANSITION_FAST
+      &:hover
+        background-color rgba(COLOR_WHITE, 0.2)
 
   .content
     width: 100%
