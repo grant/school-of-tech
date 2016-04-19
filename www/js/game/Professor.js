@@ -3,7 +3,7 @@ import Person from './Person';
 
 class Professor extends Person {
   constructor() {
-    // classes: list of class ids
+    // classes: list of class ids this professor teaches
     this.classes = {};
   }
 }
