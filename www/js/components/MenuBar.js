@@ -43,7 +43,6 @@ class MenuBar extends Component {
     // TODO Add side bar (with expanding subcomponents)
     // TODO Add full page screen with right fixed, left scroll
     // TODO Add more primitive components
-    // TODO Develop Iso.js some more
 
     let datemoney = (
       <li className="datemoney menuItem">
@@ -58,8 +57,8 @@ class MenuBar extends Component {
     let menuItems = [
       createMenuItem('mainmenu'),
       datemoney,
-      createMenuItem('school'),
       createMenuItem('build'),
+      createMenuItem('school'),
       createMenuItem('professors'),
       createMenuItem('students'),
     ];

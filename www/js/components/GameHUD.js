@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NotificationBar from './NotificationBar';
 import MenuBar from './MenuBar';
+import Sidebar from './Sidebar';
 import Modal from './Modal';
 
 class GameHUD extends Component {
@@ -20,6 +21,7 @@ class GameHUD extends Component {
           </Modal>
         </div>
         <NotificationBar />
+        <Sidebar/>
         <MenuBar
           balance={balance}
         />

@@ -1,0 +1,29 @@
+verticalPadding = 20px
+buttonSize = 100px
+buttonPadding = 10px
+itemMargin = 4px
+
+.Sidebar
+  position absolute
+  display flex
+  flex-direction column
+  justify-content center
+  left 0
+  top 0
+  width buttonSize
+  height "calc(100% - %s)" % menuBarHeight
+  padding verticalPadding 0
+
+  .sidebarItem
+    background-color rgba(COLOR_SIDE_BAR, 50%)
+    padding buttonPadding
+    text-align: center
+    width: buttonSize
+    height: buttonSize
+    margin (itemMargin/2) 0
+
+    .icon
+      display: block
+      height: 70%
+    .title
+      display: block
