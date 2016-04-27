@@ -14,7 +14,10 @@ A game about running a computer science and engineering (CSE) department. You ar
 
   TODO description of how you play
 
-### Computer Science classes I've taken (excluding the beloved Accelerated [Honors] Advanced Calculus series):
+### Computer Science classes I've taken
+
+> (excluding the beloved Accelerated [Honors] Advanced Calculus series):
+
 - [ ] **CSE143X** - Computer Programming II: ???
 - [ ] **CSE311** - Foundations of Computing I: ???
 - [ ] **CSE312** - Foundations of Computing II: ???
