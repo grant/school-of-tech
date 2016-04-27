@@ -1,4 +1,4 @@
-# CSE — The Game
+# School of Tech
 
 My Senior year Spring quarter side project. My goal is to incorporate the material I learned in each of my computer science classes in some part of the development of the game.
 
@@ -13,7 +13,32 @@ A game about running a computer science and engineering (CSE) department. You ar
 # Gameplay
 
   TODO description of how you play
- 
+
+### Computer Science classes I've taken
+
+> (excluding the beloved Accelerated [Honors] Advanced Calculus series):
+
+- [ ] **CSE143X** - Computer Programming II: ???
+- [ ] **CSE311** - Foundations of Computing I: ???
+- [ ] **CSE312** - Foundations of Computing II: ???
+- [ ] **CSE331** - Software Design & Implementation: ???
+- [ ] **CSE332** - Data Abstractions: ???
+- [ ] **CSE341** - Programming Languages: Javascript, Go
+- [ ] **CSE351** - HW/SW Interface: ???
+- [ ] **CSE390** - Leadership Seminar: ???
+- [ ] **CSE401** - Compiler Construction: Creating an DSL for Isometric 3D graphics
+- [ ] **CSE421** - Algorithms: ??
+- [ ] **CSE444** - Database Internals: Postgres setup
+- [ ] **CSE446** - Machine Learning: ???
+- [ ] **CSE451** - Operating Systems: ???
+- [ ] **CSE452** - Distributed Systems: Learning Go
+- [ ] **CSE454** - Advanced Internet and Web Services: ???
+- [ ] **CSE461** - Computer Networks: ???
+- [ ] **CSE473** - Artificial Intelligence: ???
+- [ ] **CSE481** - Sound Capstone: ???
+- [ ] **CSE484** - Computer Security: bcrypt
+- [ ] **CSE495** - Facebook Open Academy: socket.io
+
 # Ideas
 
 - Budget
