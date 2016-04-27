@@ -1,15 +1,22 @@
+menuItemColor = COLOR_GREEN
+menuItemColorHover = COLOR_GREEN
+
 .MenuBar
   position absolute
   bottom 0
   width 100%
   height menuBarHeight
-  background-color COLOR_GREEN
   box-shadow 0 -1px 10px rgba(#333, 0.1)
   display flex
 
   .menuItem
     flex 1
+    background-color menuItemColor
     height 100%
     text-align: center
     border-right 1px solid COLOR_WHITE
     padding 10px 20px
+    transition background-color TRANSITION_FAST
+
+    &:hover
+      background-color lighten(menuItemColorHover, 20%)

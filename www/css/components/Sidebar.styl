@@ -1,3 +1,6 @@
+itemColor = COLOR_GRAY
+itemHoverColor = mix(itemColor, COLOR_BLUE, 30%)
+
 verticalPadding = 20px
 buttonSize = 100px
 buttonPadding = 10px
@@ -15,15 +18,21 @@ itemMargin = 4px
   padding verticalPadding 0
 
   .sidebarItem
-    background-color rgba(COLOR_SIDE_BAR, 50%)
+    background-color rgba(itemColor, 50%)
     padding buttonPadding
-    text-align: center
-    width: buttonSize
-    height: buttonSize
+    text-align center
+    width buttonSize
+    height buttonSize
     margin (itemMargin/2) 0
+    cursor: pointer
+    transition background-color TRANSITION_FAST
+
+    &:hover
+      background-color rgba(itemHoverColor, 50%)
 
     .icon
-      display: block
-      height: 70%
+      display block
+      height 70%
     .title
-      display: block
+      display block
+      text-transform uppercase

@@ -40,7 +40,6 @@ class MenuBar extends Component {
       );
     }
 
-    // TODO Add side bar (with expanding subcomponents)
     // TODO Add full page screen with right fixed, left scroll
     // TODO Add more primitive components
 
