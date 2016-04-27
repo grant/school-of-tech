@@ -3,7 +3,7 @@ package auth
 import (
 	"github.com/gorilla/securecookie"
 	"encoding/gob"
-	"github.com/grant/CSE-The-Game/cse-the-game/models"
+	"github.com/grant/school-of-tech/school-of-tech/models"
 	"net/http"
 	"github.com/Sirupsen/logrus"
 )

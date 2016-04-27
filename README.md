@@ -100,9 +100,9 @@ Run `npm run` to see all available commands.
 Run:
 
 ```sh
-go get ./cse-the-game && heroku local
+go get ./school-of-tech && heroku local
 # or
-PORT=5000 go run ./cse-the-game/*.go
+PORT=5000 go run ./school-of-tech/*.go
 # or
 npm run server
 ```

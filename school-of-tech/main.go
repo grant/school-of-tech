@@ -2,9 +2,9 @@ package main
 
 import (
 	"github.com/Sirupsen/logrus"
-	"github.com/grant/CSE-The-Game/cse-the-game/db"
-	"github.com/grant/CSE-The-Game/cse-the-game/models"
-	"github.com/grant/CSE-The-Game/cse-the-game/routing"
+	"github.com/grant/school-of-tech/school-of-tech/db"
+	"github.com/grant/school-of-tech/school-of-tech/models"
+	"github.com/grant/school-of-tech/school-of-tech/routing"
 	"net/http"
 	"os"
 )

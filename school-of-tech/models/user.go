@@ -2,7 +2,7 @@ package models
 
 import (
 	"github.com/jinzhu/gorm"
-	"github.com/grant/CSE-The-Game/cse-the-game/db"
+	"github.com/grant/school-of-tech/school-of-tech/db"
 )
 
 type User struct {

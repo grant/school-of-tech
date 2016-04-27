@@ -1,6 +1,24 @@
 import React, { Component } from 'react';
 import numeral from 'numeral';
 
+const menuItem = {
+  mainmenu: {
+    name: 'Main Menu',
+  },
+  professors: {
+    name: 'Professors',
+  },
+  students: {
+    name: 'Students',
+  },
+  build: {
+    name: 'Build',
+  },
+  school: {
+    name: 'School',
+  },
+};
+
 class MenuBar extends Component {
   static propTypes = {
     balance: React.PropTypes.number.isRequired,
@@ -11,6 +29,22 @@ class MenuBar extends Component {
     let balance = numeral(this.props.balance).format('0,0');
 
     // Subcomponents
+    function createMenuItem(id:string) {
+      return (
+        <li className={`${id} menuItem`}>
+          <img src={`img/menubar/${id}.png`}/>
+          <span className="title">
+            {menuItem[id].name}
+          </span>
+        </li>
+      );
+    }
+
+    // TODO Add side bar (with expanding subcomponents)
+    // TODO Add full page screen with right fixed, left scroll
+    // TODO Add more primitive components
+    // TODO Develop Iso.js some more
+
     let datemoney = (
       <li className="datemoney menuItem">
         <div className="date">Date</div>
@@ -21,36 +55,13 @@ class MenuBar extends Component {
       </li>
     );
 
-    let professors = (
-      <li className="professors menuItem">
-        Professors
-      </li>
-    );
-
-    let students = (
-      <li className="students menuItem">
-        Students
-      </li>
-    );
-
-    let build = (
-      <li className="build menuItem">
-        Build
-      </li>
-    );
-
-    let school = (
-      <li className="school menuItem">
-        School
-      </li>
-    );
-
     let menuItems = [
+      createMenuItem('mainmenu'),
       datemoney,
-      school,
-      build,
-      professors,
-      students,
+      createMenuItem('school'),
+      createMenuItem('build'),
+      createMenuItem('professors'),
+      createMenuItem('students'),
     ];
     return (
       <ul

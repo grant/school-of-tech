@@ -2,10 +2,10 @@ package routing
 
 import (
 	"net/http"
-	"github.com/grant/CSE-The-Game/cse-the-game/models"
+	"github.com/grant/school-of-tech/school-of-tech/models"
 	"github.com/Sirupsen/logrus"
 	"github.com/googollee/go-socket.io"
-	"github.com/grant/CSE-The-Game/cse-the-game/auth"
+	"github.com/grant/school-of-tech/school-of-tech/auth"
 	"fmt"
 )
 

@@ -3,9 +3,9 @@ package routing
 import (
 	"github.com/gorilla/mux"
 	"github.com/googollee/go-socket.io"
-	"github.com/grant/CSE-The-Game/cse-the-game/ws"
+	"github.com/grant/school-of-tech/school-of-tech/ws"
 	"github.com/Sirupsen/logrus"
-	"github.com/grant/CSE-The-Game/cse-the-game/auth"
+	"github.com/grant/school-of-tech/school-of-tech/auth"
 	"net/http"
 )
 

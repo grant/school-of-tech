@@ -1,1 +1,1 @@
-web: cse-the-game
+web: school-of-tech

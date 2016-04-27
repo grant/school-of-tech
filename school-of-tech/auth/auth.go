@@ -2,7 +2,7 @@ package auth
 
 import (
 	"net/http"
-	"github.com/grant/CSE-The-Game/cse-the-game/models"
+	"github.com/grant/school-of-tech/school-of-tech/models"
 	"golang.org/x/crypto/bcrypt"
 )
 

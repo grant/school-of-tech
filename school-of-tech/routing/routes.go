@@ -3,7 +3,7 @@ package routing
 import (
 	"github.com/parnurzeal/gorequest"
 	"net/http"
-	"github.com/grant/CSE-The-Game/cse-the-game/ws"
+	"github.com/grant/school-of-tech/school-of-tech/ws"
 )
 
 type RouteType int
