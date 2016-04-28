@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import numeral from 'numeral';
-import GameDate from '../game/GameTime';
-import Iso from 'iso.js';
+import GameDate from '../game/models/GameTime';
+import Game from '../game';
+
+const gameContainerRef = 'gameContainer';
 
 class GameScene extends Component {
   static propTypes = {
@@ -12,19 +14,10 @@ class GameScene extends Component {
     super();
   }
 
-  // Setup Iso.js after first render
+  // Setup game after first render
   componentDidMount() {
-    var Cube = Iso.Cube;
-    Iso.DEBUG = false;
-
-    // TODO use react to get element
-    var container = document.getElementById('gameContainer');
-
-    var world = new Iso(container);
-
-    world.add(new Cube(1, 1, 1));
-
-    world.render();
+    let game = new Game(this.refs[gameContainerRef]);
+    game.render();
   }
 
   render() {
@@ -36,6 +29,7 @@ class GameScene extends Component {
 
     return (
       <div
+        ref={gameContainerRef}
         className="GameScene"
       >
         {
@@ -45,7 +39,6 @@ class GameScene extends Component {
           //<div className="gametime">{'Day: ' + gametime}</div>
           //<div className="money">{'Balance: $' + balance}</div>
         }
-        <div id="gameContainer"></div>
       </div>
     );
   }
