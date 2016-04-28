@@ -16,9 +16,11 @@ class GameHUD extends Component {
         className="GameHUD"
       >
         <div className="modalContainer">
-          <Modal>
-            <div className="foo">foo</div>
-          </Modal>
+          {
+            //<Modal>
+            //  <div className="foo">foo</div>
+            //</Modal>
+          }
         </div>
         <NotificationBar />
         <Sidebar/>

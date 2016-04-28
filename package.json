@@ -1,16 +1,21 @@
 {
   "name": "school-of-tech",
   "version": "0.0.1",
-  "description": "My Senior year Spring quarter side project ",
+  "description": "My Senior year Spring quarter side project.",
   "main": "index.js",
   "scripts": {
-    "server": "(export $(cat .env | xargs) && go run ./school-of-tech/main.go)",
+    "start": "(export $(cat .env | xargs) && go run ./school-of-tech/main.go)",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config www/webpack.config.js --progress --colors -p",
     "dev": "webpack --watch --progress --profile --colors --hot --config www/webpack.config.js",
     "deploy": "godep save ./... && if [[ `git status --porcelain` ]]; then echo 'Push changes first!'; else git push heroku master; fi",
     "heroku-postbuild": "npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/grant/school-of-tech.git"
+  },
+  "private": true,
   "author": "Grant Timmerman",
   "license": "MIT",
   "dependencies": {
@@ -29,6 +34,7 @@
     "css-loader": "^0.23.1",
     "html-webpack-plugin": "^2.15.0",
     "ip": "^1.1.2",
+    "iso.js": "0.0.5",
     "numeral": "^1.5.3",
     "object.assign": "^4.0.3",
     "raf": "^3.2.0",

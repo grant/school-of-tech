@@ -129,7 +129,7 @@ go get ./school-of-tech && heroku local
 # or
 PORT=5000 go run ./school-of-tech/*.go
 # or
-npm run server
+npm start
 ```
 
 ### Client
