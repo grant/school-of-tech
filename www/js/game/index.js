@@ -1,27 +1,29 @@
-import Iso from 'iso.js';
-const Cube = Iso.Cube;
-const Tile = Iso.Tile;
-
-Iso.DEBUG = false;
+import Map from './models/Map';
+import Renderer from './Renderer';
 
 /**
  * All of the game logic.
  */
 export default class Game {
   /**
-   * Sets up the game container.
+   * Sets up the game world.
    * @param gameContainer
    */
   constructor(gameContainer:HTMLElement) {
-    this.world = new Iso(gameContainer);
+    // Setup renderer
+    Renderer.setup(gameContainer);
 
-    this.world.add(new Tile(1, 1, 1));
+    // Setup map
+    this.map = new Map();
+
+    let mapTiles = this.map.getTiles();
+    Renderer.addTiles(mapTiles);
   }
 
   /**
-   * Renders the game to the game container.
+   * Renders the game.
    */
   render() {
-    this.world.render();
+    Renderer.render();
   }
 }
