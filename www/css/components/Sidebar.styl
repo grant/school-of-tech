@@ -9,30 +9,40 @@ itemMargin = 4px
 .Sidebar
   position absolute
   display flex
-  flex-direction column
   justify-content center
   left 0
   top 0
-  width buttonSize
   height "calc(100% - %s)" % menuBarHeight
   padding verticalPadding 0
 
-  .sidebarItem
-    background-color rgba(itemColor, 50%)
-    padding buttonPadding
-    text-align center
-    width buttonSize
-    height buttonSize
-    margin (itemMargin/2) 0
-    cursor: pointer
-    transition background-color TRANSITION_FAST
+  .column
+    display flex
+    flex-direction column
+    justify-content center
+    width: buttonSize
+    margin-right: itemMargin
 
-    &:hover
-      background-color rgba(itemHoverColor, 50%)
+    .sidebarItem
+      background-color rgba(itemColor, 50%)
+      padding buttonPadding
+      text-align center
+      width buttonSize
+      height buttonSize
+      margin (itemMargin/2) 0
+      cursor: pointer
+      transition background-color TRANSITION_FAST
 
-    .icon
-      display block
-      height 70%
-    .title
-      display block
-      text-transform uppercase
+      &.selected
+        background-color rgba(COLOR_PINK, 90%)
+        &:hover
+          background-color rgba(COLOR_PINK, 100%)
+
+      &:hover
+        background-color rgba(itemHoverColor, 50%)
+
+      .icon
+        display block
+        height 70%
+      .title
+        display block
+        text-transform uppercase
