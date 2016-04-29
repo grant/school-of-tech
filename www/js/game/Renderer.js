@@ -25,16 +25,54 @@ export default class Renderer {
 
   /**
    * Adds tiles to the world
-   * @param tilegrid
+   * @param tileGrid
    */
-  static addTiles(tilegrid:Array<Array<Object>>) {
-    for (let z = 0; z < tilegrid.length; ++z) {
-      let xtiles = tilegrid[z];
+  static addTiles(tileGrid:Array<Array<Object>>) {
+    for (let z = 0; z < tileGrid.length; ++z) {
+      let xtiles = tileGrid[z];
       for (let x = 0; x < xtiles.length; ++x) {
         let tile = xtiles[x];
         if (tile !== null) {
           let isoTile = new Tile(1, 1).position(x, 0, z).color(tileIdToColor[tile]);
           this.isoWorld.add(isoTile);
+        }
+      }
+    }
+  }
+
+  static addWalls(wallGrid:Array<Array<Array<number>>>) {
+    const wallIndexToSide = [Tile.SIDE.XPOS, Tile.SIDE.XNEG, Tile.SIDE.ZPOS, Tile.SIDE.ZNEG];
+    const wallToOffset = [{
+      x: 0.5,
+      z: 0,
+    }, {
+      x: -0.5,
+      z: 0,
+    }, {
+      x: 0,
+      z: 0.5,
+    }, {
+      x: 0,
+      z: -0.5,
+    }];
+
+    for (let z = 0; z < wallGrid.length; ++z) {
+      let xwalls = wallGrid[z];
+      for (let x = 0; x < xwalls.length; ++x) {
+        let walls = xwalls[x];
+
+        // For all walls on this tile
+        for (let i = 0; i < walls.length; ++i) {
+          let wall = walls[i];
+          if (wall !== null) {
+            let rotation = wallIndexToSide[i];
+            let wallOffset = wallToOffset[i];
+            let isoTile = new Tile(1, 1)
+              .position(x + wallOffset.x, 0.5, z + wallOffset.z)
+              .color(tileIdToColor[wall])
+              .rotation(rotation);
+            this.isoWorld.add(isoTile);
+          }
         }
       }
     }

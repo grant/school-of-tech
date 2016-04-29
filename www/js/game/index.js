@@ -16,8 +16,8 @@ export default class Game {
     // Setup map
     this.map = new Map();
 
-    let mapTiles = this.map.getTiles();
-    Renderer.addTiles(mapTiles);
+    Renderer.addTiles(this.map.getTiles());
+    Renderer.addWalls(this.map.getWalls());
   }
 
   /**

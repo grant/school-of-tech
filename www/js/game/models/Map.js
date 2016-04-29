@@ -3,24 +3,17 @@
  */
 export default class Map {
   /**
-   * tiles: map[y][x] to tileTypeId
+   * tiles: map[x][z] to tileTypeId
    * assumes 2d tiles
-   * e.g.
-   * this.tiles = {
-   *   "22,11": 2
-   * };
-   *
+   * TODO Chunk tiles
    */
   tiles = [];
 
   /**
-   * walls: maps x, y to vertical walls on XPOS, XNEG, ZPOS, ZNEG
-   * e.g.
-   * this.walls = {
-   *   "22,11": [null, null, 3, null],
-   * };
+   * walls: map[z][x] to vertical walls on [XPOS, XNEG, ZPOS, ZNEG]
+   * TODO make sparce map
    */
-  walls = {};
+  walls = [];
 
   /**
    * pathGrid: Used for `javascript-astar`
@@ -63,15 +56,19 @@ export default class Map {
    * @param width
    * @param length
    */
-  getBlankTileGrid({width, length}) {
+  setupBlankMapGrid({width, length}) {
     let tileGrid = [];
+    let wallGrid = [];
     for (let x = 0; x < width; ++x) {
       tileGrid[x] = [];
+      wallGrid[x] = [];
       for (let z = 0; z < length; ++z) {
         tileGrid[x][z] = null;
+        wallGrid[x][z] = [null, null, null, null];
       }
     }
-    return tileGrid;
+    this.tiles = tileGrid;
+    this.walls = wallGrid;
   }
 
   /**
@@ -91,6 +88,7 @@ export default class Map {
     for (let x = position.x; x < position.x + width; ++x) {
       for (let z = position.z; z < position.z + length; ++z) {
         this.tiles[x][z] = tileId;
+        this.walls[x][z] = [tileId, tileId, tileId, tileId];
       }
     }
   }
@@ -98,7 +96,7 @@ export default class Map {
   constructor() {
     // Construct an initial map
     // Set tile 2d array
-    this.tiles = this.getBlankTileGrid({
+    this.setupBlankMapGrid({
       width: 60,
       length: 40,
     });
@@ -174,33 +172,28 @@ export default class Map {
     this.setTilesInRectangle({
       position: {
         x: 19,
-        z: 1,
+        z: 3,
       },
-      width: 3,
-      length: 5,
+      width: 5,
+      length: 12,
       tileId: classroom3TileId,
     });
     this.setTilesInRectangle({
       position: {
-        x: 22,
-        z: 1,
+        x: 11,
+        z: 10,
       },
-      width: 3,
+      width: 8,
       length: 5,
-      tileId: classroom2TileId,
-    });
-    this.setTilesInRectangle({
-      position: {
-        x: 25,
-        z: 1,
-      },
-      width: 10,
-      length: 5,
-      tileId: classroom3TileId,
+      tileId: classroom1TileId,
     });
   }
 
   getTiles():Array<Array<Object>> {
     return this.tiles;
+  }
+
+  getWalls():Array<Array<Array<number>>> {
+    return this.walls;
   }
 }
