@@ -1,5 +1,7 @@
 # School of Tech
 
+  -- WARNING INCOMPLETE --
+
 My Senior year Spring quarter side project. My goal is to incorporate the material I learned in each of my computer science classes in some part of the development of the game.
 
 ---
