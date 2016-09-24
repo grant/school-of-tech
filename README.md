@@ -1,6 +1,6 @@
 # School of Tech
 
-My Senior year Spring quarter side project. My goal is to incorporate the material I learned in each of my computer science classes in some part of the development of the game.
+My 2016 side project. My goal is to incorporate the material I learned in each of my computer science classes at UW in some part of the development of the game.
 
 ---
 
@@ -120,7 +120,9 @@ PORT=5000
 Use `package.json`'s scripts for all our commands, even for Go code.
 Run `npm run` to see all available commands.
 
-### Server
+## Locally
+
+### Server (1/2)
 
 Run:
 
@@ -132,7 +134,15 @@ PORT=5000 go run ./school-of-tech/*.go
 npm start
 ```
 
-### Client
+### Client (2/2)
+
+Run:
+
+```sh
+npm run dev
+```
+
+## Remotely
 
 ### Deploy
 
@@ -151,4 +161,4 @@ Deploy to heroku:
 npm run deploy
 ```
 
-Made at the University of Washington
+Made by Grant Timmerman
