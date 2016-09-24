@@ -22,11 +22,12 @@ class HomeNavigation extends Component {
   }
 
   signupButtonHandler() {
+    console.log('signup');
     signupButtonHandler();
   }
 
   loginButtonHandler() {
-    console.log('test');
+    console.log('login');
   }
 }
 

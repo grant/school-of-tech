@@ -3,6 +3,7 @@ const Tile = Iso.Tile;
 const Color = Iso.Color;
 Iso.DEBUG = false;
 
+const TILE_SIZE = 3;
 const tileIdToColor = {
   0: new Color('red'),
   1: new Color('blue'),
@@ -33,7 +34,9 @@ export default class Renderer {
       for (let x = 0; x < xtiles.length; ++x) {
         let tile = xtiles[x];
         if (tile !== null) {
-          let isoTile = new Tile(1, 1).position(x, 0, z).color(tileIdToColor[tile]);
+          let isoTile = new Tile(TILE_SIZE, TILE_SIZE)
+            .position(x * TILE_SIZE, 0, z * TILE_SIZE)
+            .color(tileIdToColor[tile]);
           this.isoWorld.add(isoTile);
         }
       }
@@ -67,8 +70,8 @@ export default class Renderer {
           if (wall !== null) {
             let rotation = wallIndexToSide[i];
             let wallOffset = wallToOffset[i];
-            let isoTile = new Tile(1, 1)
-              .position(x + wallOffset.x, 0.5, z + wallOffset.z)
+            let isoTile = new Tile(TILE_SIZE, TILE_SIZE)
+              .position(TILE_SIZE * (x + wallOffset.x), TILE_SIZE / 2, TILE_SIZE * (z + wallOffset.z))
               .color(tileIdToColor[wall])
               .rotation(rotation);
             this.isoWorld.add(isoTile);
