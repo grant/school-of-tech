@@ -1,7 +1,18 @@
+import Enum from 'es6-enum';
+
 /**
  * The physical world map of the game.
  */
 export default class Map {
+  static SIDE = Enum(
+    'XPOS',
+    'XNEG',
+    'YPOS',
+    'YNEG',
+    'ZPOS',
+    'ZNEG'
+  );
+
   /**
    * tiles: map[x][z] to tileTypeId
    * assumes 2d tiles
@@ -75,19 +86,20 @@ export default class Map {
    * Sets all tiles within a rectangle to a specified tileId.
    * Starts from the origin and goes width in x direction, lenght in z direction
    * @param position
-   * @param width
-   * @param length
+   * @param size
    * @param tileId
    */
-  setTilesInRectangle({
+  createRoom({
     position,
-    width,
-    length,
+    size,
+    windows = [],
     tileId,
     }) {
     // Remember:
     // XPOS: TOP-LEFT, XNEG: BOTTOM-RIGHT
     // ZPOS: TOP-RIGHT, ZNEG: BOTTOM-LEFT
+
+    let {width, length} = size;
 
     /**
      * Gets the walls surrounding this tile (null for no wall)
@@ -100,8 +112,29 @@ export default class Map {
       let xpos = (z === position.z + length - 1) ? tileId : null;
       let zneg = (x === position.x) ? tileId : null;
       let zpos = (x === position.x + width - 1) ? tileId : null;
+
+      // remove window areas from walls
+      // TODO optimize so you don't look at all windows
+      for (let window of windows) {
+        if (window.x === x && window.z === z) {
+          switch (window.direction) {
+            case Map.SIDE.XPOS:
+              xpos = null;
+              break;
+            case Map.SIDE.XNEG:
+              xneg = null;
+              break;
+            case Map.SIDE.ZPOS:
+              zpos = null;
+              break;
+            case Map.SIDE.ZNEG:
+              zneg = null;
+              break;
+          }
+        }
+      }
       return [xpos, xneg, zpos, zneg];
-    }
+    };
 
     for (let x = position.x; x < position.x + width; ++x) {
       for (let z = position.z; z < position.z + length; ++z) {
@@ -124,94 +157,119 @@ export default class Map {
     let classroom2TileId = 2;
     let classroom3TileId = 3;
 
-    this.setTilesInRectangle({
+    this.createRoom({
       position: {
         x: 11,
         z: 3,
       },
-      width: 2,
-      length: 2,
+      size: {
+        width: 2,
+        length: 2,
+      },
       tileId: classroom1TileId,
     });
-    this.setTilesInRectangle({
+    this.createRoom({
       position: {
         x: 5,
         z: 3,
       },
-      width: 3,
-      length: 5,
+      size: {
+        width: 3,
+        length: 5,
+      },
+      windows: [{
+        x: 5,
+        z: 3,
+        direction: Map.SIDE.ZNEG
+      }],
       tileId: classroom1TileId,
     });
-    this.setTilesInRectangle({
+    this.createRoom({
       position: {
         x: 3,
         z: 8,
       },
-      width: 16,
-      length: 2,
+      size: {
+        width: 16,
+        length: 2,
+      },
       tileId: hallwayTileId,
     });
-    this.setTilesInRectangle({
+    this.createRoom({
       position: {
         x: 8,
         z: 3,
       },
-      width: 3,
-      length: 5,
+      size: {
+        width: 3,
+        length: 5,
+      },
       tileId: classroom2TileId,
     });
-    this.setTilesInRectangle({
+    this.createRoom({
       position: {
         x: 3,
         z: 10,
       },
-      width: 6,
-      length: 5,
+      size: {
+        width: 6,
+        length: 5,
+      },
       tileId: classroom2TileId,
     });
-    this.setTilesInRectangle({
+    this.createRoom({
       position: {
         x: 9,
         z: 10,
       },
-      width: 2,
-      length: 5,
+      size: {
+        width: 2,
+        length: 5,
+      },
       tileId: hallwayTileId,
     });
-    this.setTilesInRectangle({
+    this.createRoom({
       position: {
         x: 11,
         z: 5,
       },
-      width: 4,
-      length: 3,
+      size: {
+        width: 4,
+        length: 3,
+      },
       tileId: classroom3TileId,
     });
-    this.setTilesInRectangle({
+    this.createRoom({
       position: {
         x: 15,
         z: 5,
       },
-      width: 4,
-      length: 3,
+      size: {
+        width: 4,
+        length: 3,
+      },
       tileId: classroom1TileId,
     });
-    this.setTilesInRectangle({
+    this.createRoom({
       position: {
         x: 19,
         z: 3,
       },
-      width: 5,
-      length: 12,
+      size: {
+        width: 5,
+        length: 12,
+      },
       tileId: classroom3TileId,
     });
-    this.setTilesInRectangle({
+    this.createRoom({
       position: {
         x: 11,
         z: 10,
       },
-      width: 8,
-      length: 5,
+      size: {
+        width: 8,
+        length: 5,
+      },
       tileId: classroom1TileId,
     });
   }

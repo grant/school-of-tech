@@ -22,6 +22,8 @@ export default class Renderer {
    */
   static setup(container:HTMLElement) {
     this.isoWorld = new Iso(container);
+    //Iso.Renderer.SHADOWS_ENABLED = true;
+    //Iso.DEBUG = true;
   }
 
   /**
