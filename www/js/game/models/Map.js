@@ -144,10 +144,10 @@ export default class Map {
     });
     this.setTilesInRectangle({
       position: {
-        x: 0,
+        x: 3,
         z: 8,
       },
-      width: 19,
+      width: 16,
       length: 2,
       tileId: hallwayTileId,
     });
