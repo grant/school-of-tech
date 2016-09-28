@@ -85,10 +85,28 @@ export default class Map {
     length,
     tileId,
     }) {
+    // Remember:
+    // XPOS: TOP-LEFT, XNEG: BOTTOM-RIGHT
+    // ZPOS: TOP-RIGHT, ZNEG: BOTTOM-LEFT
+
+    /**
+     * Gets the walls surrounding this tile (null for no wall)
+     * @param x
+     * @param z
+     * @returns {*[]}
+     */
+    let getWallArray = (x:number, z:number) => {
+      let xneg = (z === position.z) ? tileId : null;
+      let xpos = (z === position.z + length - 1) ? tileId : null;
+      let zneg = (x === position.x) ? tileId : null;
+      let zpos = (x === position.x + width - 1) ? tileId : null;
+      return [xpos, xneg, zpos, zneg];
+    }
+
     for (let x = position.x; x < position.x + width; ++x) {
       for (let z = position.z; z < position.z + length; ++z) {
         this.tiles[x][z] = tileId;
-        this.walls[x][z] = [tileId, tileId, tileId, tileId];
+        this.walls[x][z] = getWallArray(x, z);
       }
     }
   }
@@ -108,10 +126,19 @@ export default class Map {
 
     this.setTilesInRectangle({
       position: {
-        x: 0,
+        x: 11,
         z: 3,
       },
-      width: 8,
+      width: 2,
+      length: 2,
+      tileId: classroom1TileId,
+    });
+    this.setTilesInRectangle({
+      position: {
+        x: 5,
+        z: 3,
+      },
+      width: 3,
       length: 5,
       tileId: classroom1TileId,
     });

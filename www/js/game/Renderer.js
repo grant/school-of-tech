@@ -3,7 +3,7 @@ const Tile = Iso.Tile;
 const Color = Iso.Color;
 Iso.DEBUG = false;
 
-const TILE_SIZE = 3;
+const TILE_SIZE = 1;
 const tileIdToColor = {
   0: new Color('red'),
   1: new Color('blue'),
@@ -45,18 +45,19 @@ export default class Renderer {
 
   static addWalls(wallGrid:Array<Array<Array<number>>>) {
     const wallIndexToSide = [Tile.SIDE.XPOS, Tile.SIDE.XNEG, Tile.SIDE.ZPOS, Tile.SIDE.ZNEG];
+    const WALL_EPSILON = 0.01; // makes walls not collide into each other
     const wallToOffset = [{
-      x: 0.5,
+      x: 0.5 - WALL_EPSILON,
       z: 0,
     }, {
-      x: -0.5,
+      x: -0.5 + WALL_EPSILON,
       z: 0,
     }, {
       x: 0,
-      z: 0.5,
+      z: 0.5 - WALL_EPSILON,
     }, {
       x: 0,
-      z: -0.5,
+      z: -0.5 + WALL_EPSILON,
     }];
 
     for (let z = 0; z < wallGrid.length; ++z) {
