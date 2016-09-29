@@ -14,7 +14,7 @@ export default class Game {
     Renderer.setup(gameContainer);
 
     // Setup map
-    const demoMap = new DemoMap();
+    const demoMap:DemoMap = new DemoMap();
 
     Renderer.addFloor(demoMap.getFloor());
     Renderer.addWalls(demoMap.getWalls());

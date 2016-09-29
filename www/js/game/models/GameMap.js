@@ -1,4 +1,5 @@
 import Enum from 'es6-enum';
+import Renderer from '../Renderer';
 
 type TileID = number;
 type Room = {
@@ -10,7 +11,7 @@ type Room = {
 /**
  * The physical world map of the game.
  */
-export default class Map {
+export default class GameMap {
   static SIDE = Enum(
     'XPOS',
     'XNEG',
@@ -19,6 +20,12 @@ export default class Map {
     'ZPOS',
     'ZNEG'
   );
+
+  /**
+   * The width and length of the map.
+   */
+  width:Number;
+  height:Number;
 
   /**
    * tiles: map[x][z] to tileTypeId
@@ -75,18 +82,37 @@ export default class Map {
    * @param length
    */
   setupBlankMapGrid({width, length}) {
+    this.width = width;
+    this.length = length;
+
     let tileGrid = [];
     let wallGrid = [];
-    for (let x = 0; x < width; ++x) {
+    for (let x = 0; x < this.width; ++x) {
       tileGrid[x] = [];
       wallGrid[x] = [];
-      for (let z = 0; z < length; ++z) {
+      for (let z = 0; z < this.length; ++z) {
         tileGrid[x][z] = null;
         wallGrid[x][z] = [null, null, null, null];
       }
     }
     this.tiles = tileGrid;
     this.walls = wallGrid;
+  }
+
+  /**
+   * Fills all tiles that aren't covered with grass.
+   */
+  fillMapGridWithGrass() {
+    for (let x = 0; x < this.width; ++x) {
+      for (let z = 0; z < this.length; ++z) {
+        // Just check if the tile has something
+        // If there's nothing, fill it with grass
+        if (this.tiles[x][z] === null) {
+          // Put grass
+          this.tiles[x][z] = 4; // grass
+        }
+      }
+    }
   }
 
   /**
@@ -130,16 +156,16 @@ export default class Map {
       for (let window of windows) {
         if (window.x === x && window.z === z) {
           switch (window.direction) {
-            case Map.SIDE.XPOS:
+            case GameMap.SIDE.XPOS:
               xpos = null;
               break;
-            case Map.SIDE.XNEG:
+            case GameMap.SIDE.XNEG:
               xneg = null;
               break;
-            case Map.SIDE.ZPOS:
+            case GameMap.SIDE.ZPOS:
               zpos = null;
               break;
-            case Map.SIDE.ZNEG:
+            case GameMap.SIDE.ZNEG:
               zneg = null;
               break;
           }
@@ -150,16 +176,16 @@ export default class Map {
       for (let door of doors) {
         if (door.x === x && door.z === z) {
           switch (door.direction) {
-            case Map.SIDE.XPOS:
+            case GameMap.SIDE.XPOS:
               xpos = null;
               break;
-            case Map.SIDE.XNEG:
+            case GameMap.SIDE.XNEG:
               xneg = null;
               break;
-            case Map.SIDE.ZPOS:
+            case GameMap.SIDE.ZPOS:
               zpos = null;
               break;
-            case Map.SIDE.ZNEG:
+            case GameMap.SIDE.ZNEG:
               zneg = null;
               break;
           }

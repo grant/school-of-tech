@@ -9,6 +9,7 @@ const tileIdToColor = {
   1: new Color('blue'),
   2: new Color('pink'),
   3: new Color('orange'),
+  4: new Color('green'), // grass
 };
 
 /**

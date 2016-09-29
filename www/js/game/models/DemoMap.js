@@ -1,19 +1,38 @@
-import Map from './Map';
+import GameMap from './GameMap';
 
 /**
  * Gets a demo map.
  */
 class DemoMap {
+  /**
+   * Creates a demo map.
+   * @returns {GameMap}
+   */
   constructor() {
-    const map:Map = new Map();
+    const map:GameMap = new GameMap();
+    this.setupMap(map);
+    this.createRooms(map);
+    this.addGrass(map);
+    return map;
+  }
 
-    // Construct an initial map
-    // Set tile 2d array
+  /**
+   * Construct an initial map
+   * Set tile 2d array
+   * @param map
+   */
+  setupMap(map:GameMap) {
     map.setupBlankMapGrid({
       width: 60,
       length: 40,
     });
+  }
 
+  /**
+   * Creates rooms and adds it to the map
+   * @param map
+   */
+  createRooms(map:GameMap) {
     let hallwayTileId = 0;
     let classroom1TileId = 1;
     let classroom2TileId = 2;
@@ -42,12 +61,12 @@ class DemoMap {
       windows: [{
         x: 5,
         z: 7,
-        direction: Map.SIDE.ZNEG,
+        direction: GameMap.SIDE.ZNEG,
       }],
       doors: [{
         x: 5,
         z: 3,
-        direction: Map.SIDE.ZNEG,
+        direction: GameMap.SIDE.ZNEG,
       }],
       tileId: classroom1TileId,
     });
@@ -139,8 +158,14 @@ class DemoMap {
       },
       tileId: classroom1TileId,
     });
+  }
 
-    return map;
+  /**
+   * Adds grass to all tiles on the map not covered by a room.
+   * @param map
+   */
+  addGrass(map:GameMap) {
+    map.fillMapGridWithGrass();
   }
 }
 
