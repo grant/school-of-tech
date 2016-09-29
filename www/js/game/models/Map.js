@@ -87,12 +87,15 @@ export default class Map {
    * Starts from the origin and goes width in x direction, lenght in z direction
    * @param position
    * @param size
+   * @param windows
+   * @param doors
    * @param tileId
    */
   createRoom({
     position,
     size,
     windows = [],
+    doors = [],
     tileId,
     }) {
     // Remember:
@@ -114,7 +117,9 @@ export default class Map {
       let zpos = (x === position.x + width - 1) ? tileId : null;
 
       // remove window areas from walls
-      // TODO optimize so you don't look at all windows
+      // TODO optimize so you don't look at all windows, just this (x, y)
+
+      // Windows
       for (let window of windows) {
         if (window.x === x && window.z === z) {
           switch (window.direction) {
@@ -133,6 +138,27 @@ export default class Map {
           }
         }
       }
+
+      // Doors
+      for (let door of doors) {
+        if (door.x === x && door.z === z) {
+          switch (door.direction) {
+            case Map.SIDE.XPOS:
+              xpos = null;
+              break;
+            case Map.SIDE.XNEG:
+              xneg = null;
+              break;
+            case Map.SIDE.ZPOS:
+              zpos = null;
+              break;
+            case Map.SIDE.ZNEG:
+              zneg = null;
+              break;
+          }
+        }
+      }
+
       return [xpos, xneg, zpos, zneg];
     };
 
@@ -179,8 +205,13 @@ export default class Map {
       },
       windows: [{
         x: 5,
+        z: 7,
+        direction: Map.SIDE.ZNEG,
+      }],
+      doors: [{
+        x: 5,
         z: 3,
-        direction: Map.SIDE.ZNEG
+        direction: Map.SIDE.ZNEG,
       }],
       tileId: classroom1TileId,
     });
