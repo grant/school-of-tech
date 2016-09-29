@@ -1,4 +1,5 @@
 import GameMap from './GameMap';
+import * as Constants from './Constants';
 
 /**
  * Gets a demo map.
@@ -33,10 +34,10 @@ class DemoMap {
    * @param map
    */
   createRooms(map:GameMap) {
-    let hallwayTileId = 0;
-    let classroom1TileId = 1;
-    let classroom2TileId = 2;
-    let classroom3TileId = 3;
+    let hallwayTileId = Constants.ROOM_ID_0_COLOR;
+    let classroom1TileId = Constants.ROOM_ID_1_COLOR;
+    let classroom2TileId = Constants.ROOM_ID_2_COLOR;
+    let classroom3TileId = Constants.ROOM_ID_3_COLOR;
 
     map.createRoom({
       position: {

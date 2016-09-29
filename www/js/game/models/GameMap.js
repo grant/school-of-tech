@@ -1,5 +1,6 @@
 import Enum from 'es6-enum';
 import Renderer from '../Renderer';
+import {ID_COLOR_GRASS} from './Constants';
 
 type TileID = number;
 type Room = {
@@ -109,7 +110,7 @@ export default class GameMap {
         // If there's nothing, fill it with grass
         if (this.tiles[x][z] === null) {
           // Put grass
-          this.tiles[x][z] = 4; // grass
+          this.tiles[x][z] = ID_COLOR_GRASS; // grass
         }
       }
     }
@@ -131,7 +132,7 @@ export default class GameMap {
     doors = [],
     tileId,
     }) {
-    // Remember:
+    // Remember:4
     // XPOS: TOP-LEFT, XNEG: BOTTOM-RIGHT
     // ZPOS: TOP-RIGHT, ZNEG: BOTTOM-LEFT
 
