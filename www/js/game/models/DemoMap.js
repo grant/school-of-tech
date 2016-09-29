@@ -23,8 +23,8 @@ class DemoMap {
    */
   setupMap(map:GameMap) {
     map.setupBlankMapGrid({
-      width: 60,
-      length: 40,
+      width: 30,
+      length: 20,
     });
   }
 
