@@ -1,4 +1,4 @@
-import Map from './models/Map';
+import DemoMap from './models/DemoMap';
 import Renderer from './Renderer';
 
 /**
@@ -14,10 +14,10 @@ export default class Game {
     Renderer.setup(gameContainer);
 
     // Setup map
-    this.map = new Map();
+    const demoMap = new DemoMap();
 
-    Renderer.addTiles(this.map.getTiles());
-    Renderer.addWalls(this.map.getWalls());
+    Renderer.addFloor(demoMap.getFloor());
+    Renderer.addWalls(demoMap.getWalls());
   }
 
   /**

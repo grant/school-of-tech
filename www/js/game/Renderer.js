@@ -30,7 +30,7 @@ export default class Renderer {
    * Adds tiles to the world
    * @param tileGrid
    */
-  static addTiles(tileGrid:Array<Array<Object>>) {
+  static addFloor(tileGrid:Array<Array<Object>>) {
     for (let z = 0; z < tileGrid.length; ++z) {
       let xtiles = tileGrid[z];
       for (let x = 0; x < xtiles.length; ++x) {
@@ -47,7 +47,7 @@ export default class Renderer {
 
   static addWalls(wallGrid:Array<Array<Array<number>>>) {
     const wallIndexToSide = [Tile.SIDE.XPOS, Tile.SIDE.XNEG, Tile.SIDE.ZPOS, Tile.SIDE.ZNEG];
-    const WALL_EPSILON = 0.01; // makes walls not collide into each other
+    const WALL_EPSILON = 0.005; // makes walls not collide into each other
     const wallToOffset = [{
       x: 0.5 - WALL_EPSILON,
       z: 0,
